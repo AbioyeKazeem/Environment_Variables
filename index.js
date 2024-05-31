@@ -13,16 +13,20 @@ const port = 3000;
 const saltRounds = 10;
 env.config(); // enviroment varible to store our key codes encryption credential, very important
 
+
+// the database credentials already wrapped up in environment variables (.env) so as to keep it save from unauthorized access
 const db = new pg.Client({
-  user: "postgres",
-  host: "localhost",
-  database: "secrets",
-  password: "babatunde3891",
-  port: 5432,
+  user: process.env.PG_USER,
+  host: process.env.PG_HOST,
+  database: process.env.PG_DATABASE,
+  password: process.env.PG_PASSWORD,
+  port: process.env.PG_PORT,
 });
+
 
 // connnecting database 
 db.connect();
+
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
@@ -45,7 +49,7 @@ app.use(session ({
   app.use(passport.session());
 
 
-  
+
 app.get("/", (req, res) => {
   res.render("home.ejs");
 });
