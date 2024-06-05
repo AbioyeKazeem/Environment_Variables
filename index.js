@@ -105,7 +105,7 @@ app.post("/register", async (req, res) => {
 });
 
 
-//codes for login using passport with function authenticate that will
+//codes for login using passport with function authenticate that allow user login if the user has been authenticated.
 app.post("/login", passport.authenticate("local", {
   successRedirect: "/secrets",
   failureRedirect: "/login"
