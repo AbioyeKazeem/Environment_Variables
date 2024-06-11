@@ -24,7 +24,7 @@ const db = new pg.Client({
 });
 
 
-// connnecting database 
+// connnecting database to the application
 db.connect();
 
 
